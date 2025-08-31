@@ -3,69 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nabil K Sabu - Ultimate UI</title>
+<title>Nabil K Sabu - Neon Ultimate UI</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body,html{height:100%;overflow:hidden;background:#0a0a2a;color:#fff;}
-
-/* Loader */
+body, html{min-height:100%;background:#0a0a2a;color:#fff;overflow-x:hidden;cursor:none;position:relative;}
 #loader{position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0a2a;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9999;}
 .loader-bar-container{width:70%;height:25px;border-radius:15px;background:rgba(255,255,255,0.1);overflow:hidden;box-shadow:0 0 15px rgba(0,200,255,0.5) inset;}
-.loader-bar{width:0%;height:100%;background:linear-gradient(90deg,#00f2fe,#4facfe,#00f2fe);border-radius:15px;animation:load 1.4s forwards;box-shadow:0 0 20px #00f2fe,0 0 40px #4facfe inset;position:relative;}
+.loader-bar{width:0%;height:100%;border-radius:15px;background:linear-gradient(90deg,#00f2fe,#4facfe,#00f2fe);box-shadow:0 0 20px #00f2fe,0 0 40px #4facfe inset;position:relative;animation:load 1.4s forwards;}
 .loader-bar::before{content:'';position:absolute;top:0;left:-50%;width:50%;height:100%;background:rgba(255,255,255,0.3);transform:skewX(-25deg);animation:shine 1.4s forwards;}
-@keyframes load{0%{width:0%;}100%{width:100%;}}
-@keyframes shine{0%{left:-50%;}100%{left:100%;}}
-
-/* Main Content */
-#main-content{opacity:0;transition:opacity 1s ease-in-out;}
-body.loaded #main-content{opacity:1;}
-body.loaded #loader{display:none;}
-.container{width:100%;max-width:600px;text-align:center;position:relative;z-index:2;}
-
-/* Profile & Links */
+@keyframes load{0%{width:0%;}100%{width:100%;}} @keyframes shine{0%{left:-50%;}100%{left:100%;}}
+#main-content{opacity:0;transition:opacity 1s ease-in-out;} body.loaded #main-content{opacity:1;} body.loaded #loader{display:none;}
+canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;pointer-events:none;}
+.container{width:100%;max-width:600px;text-align:center;position:relative;z-index:2;padding:50px 20px;}
 .profile{margin-bottom:40px;animation:fadeIn 1s ease-out;}
 h1{font-size:3rem;margin-bottom:10px;text-shadow:0 0 15px rgba(0,255,255,0.5);background:linear-gradient(45deg,#00f2fe,#4facfe,#00f2fe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 5s infinite alternate;}
 .title{font-size:1.2rem;margin-bottom:30px;color:#a6c1ee;}
 .links{display:flex;flex-direction:column;gap:20px;margin-bottom:40px;}
 .link-button{display:flex;align-items:center;justify-content:flex-start;padding:18px 25px;border-radius:50px;text-decoration:none;color:white;font-weight:600;font-size:1.2rem;transition:all 0.3s ease;position:relative;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.3);border:2px solid transparent;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);}
-.link-button::before{content:'';position:absolute;top:-2px;left:-2px;right:-2px;bottom:-2px;z-index:-1;background:linear-gradient(45deg,#4facfe,#00f2fe,#a6c1ee,#fbc2eb);background-size:400%;border-radius:50px;opacity:0;transition:opacity 0.3s,transform 0.3s;animation: glowing 20s linear infinite;}
-.link-button:hover::before{opacity:1;}
-.link-button:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.4);}
-.link-button:active{transform:translateY(0);}
-.link-button i{font-size:1.8rem;margin-right:15px;width:30px;text-align:center;transition:transform 0.3s,color 0.3s;}
-.link-button:hover i{transform:scale(1.2);}
-.link-button .button-text{flex-grow:1;text-align:center;}
+.link-button::before{content:'';position:absolute;top:-2px;left:-2px;right:-2px;bottom:-2px;z-index:-1;background:linear-gradient(45deg,#4facfe,#00f2fe,#a6c1ee,#fbc2eb);background-size:400%;border-radius:50px;opacity:0;transition:opacity 0.3s,transform 0.3s;animation:glowing 20s linear infinite;}
+.link-button:hover::before{opacity:1;} .link-button:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.4);} .link-button:active{transform:translateY(0);}
+.link-button i{font-size:1.8rem;margin-right:15px;width:30px;text-align:center;transition:transform 0.3s,color 0.3s;} .link-button:hover i{transform:scale(1.2);} .link-button .button-text{flex-grow:1;text-align:center;}
+#rickroll-btn{margin-top:20px;padding:15px 25px;border-radius:50px;background:linear-gradient(90deg,#00f2fe,#4facfe);color:#fff;font-weight:700;font-size:1.2rem;text-decoration:none;display:inline-block;box-shadow:0 5px 20px rgba(0,255,255,0.4);transition:all 0.3s;} #rickroll-btn:hover{transform:scale(1.1);box-shadow:0 10px 30px rgba(0,255,255,0.7);}
 footer{margin-top:20px;opacity:0.7;font-size:0.9rem;color:#a6c1ee;}
-
-/* Surprise Button */
-#rickroll-btn{margin-top:20px;padding:15px 25px;border-radius:50px;background:linear-gradient(90deg,#00f2fe,#4facfe);color:#fff;font-weight:700;font-size:1.2rem;text-decoration:none;display:inline-block;box-shadow:0 5px 20px rgba(0,255,255,0.4);transition:all 0.3s;}
-#rickroll-btn:hover{transform:scale(1.1);box-shadow:0 10px 30px rgba(0,255,255,0.7);}
-
-/* Background Stars & Particles */
-.stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
-.star{position:absolute;background-color:#00f2fe;border-radius:50%;animation:twinkle linear infinite;}
-.spark{position:absolute;width:2px;height:2px;background:#4facfe;border-radius:50%;animation:sparkAnim linear infinite;}
-@keyframes twinkle{0%,100%{opacity:0.2;}50%{opacity:1;}}
-@keyframes sparkAnim{0%{transform:translateY(0);}50%{transform:translateY(-15px);}100%{transform:translateY(0);}}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-@keyframes glowing{0%{background-position:0 0;}50%{background-position:400% 0;}100%{background-position:0 0;}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}} 
+@keyframes glowing{0%{background-position:0 0;}50%{background-position:400% 0;}100%{background-position:0 0;}} 
 @keyframes gradientShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 </style>
 </head>
 <body>
 
-<!-- Loader -->
 <div id="loader">
-  <div class="loader-bar-container">
-    <div class="loader-bar"></div>
-  </div>
+  <div class="loader-bar-container"><div class="loader-bar"></div></div>
 </div>
 
-<!-- Background -->
-<div class="stars" id="stars"></div>
+<canvas id="bgCanvas"></canvas>
 
-<!-- Main Content -->
 <div id="main-content">
   <div class="container">
     <div class="profile">
@@ -73,77 +46,68 @@ footer{margin-top:20px;opacity:0.7;font-size:0.9rem;color:#a6c1ee;}
       <p class="title">Developer & Content Creator</p>
     </div>
     <div class="links">
-      <a href="https://www.linkedin.com/in/nabil-k-sabu-208393370" class="link-button linkedin" target="_blank">
-        <i class="fab fa-linkedin"></i>
-        <span class="button-text">LinkedIn</span>
-      </a>
-      <a href="https://github.com/nabilksabu" class="link-button github" target="_blank">
-        <i class="fab fa-github"></i>
-        <span class="button-text">GitHub (nabilksabu)</span>
-      </a>
-      <a href="https://github.com/excitedtritium" class="link-button github" target="_blank">
-        <i class="fab fa-github"></i>
-        <span class="button-text">GitHub (excitedtritium)</span>
-      </a>
-      <a href="https://instagram.com/nabilksabu" class="link-button instagram" target="_blank">
-        <i class="fab fa-instagram"></i>
-        <span class="button-text">Instagram</span>
-      </a>
-      <a href="https://youtube.com/@nabilksabu" class="link-button youtube" target="_blank">
-        <i class="fab fa-youtube"></i>
-        <span class="button-text">YouTube Channel</span>
-      </a>
+      <a href="https://www.linkedin.com/in/nabil-k-sabu-208393370" class="link-button linkedin" target="_blank"><i class="fab fa-linkedin"></i><span class="button-text">LinkedIn</span></a>
+      <a href="https://github.com/nabilksabu" class="link-button github" target="_blank"><i class="fab fa-github"></i><span class="button-text">GitHub (nabilksabu)</span></a>
+      <a href="https://github.com/excitedtritium" class="link-button github" target="_blank"><i class="fab fa-github"></i><span class="button-text">GitHub (excitedtritium)</span></a>
+      <a href="https://instagram.com/nabilksabu" class="link-button instagram" target="_blank"><i class="fab fa-instagram"></i><span class="button-text">Instagram</span></a>
+      <a href="https://youtube.com/@nabilksabu" class="link-button youtube" target="_blank"><i class="fab fa-youtube"></i><span class="button-text">YouTube Channel</span></a>
     </div>
-    <!-- Rickroll Button -->
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" id="rickroll-btn" target="_blank">🎉 Surprise!</a>
     <footer>
       <p>© 2023 Nabil K Sabu. All rights reserved.</p>
     </footer>
+    <div style="height:2500px;"></div>
   </div>
 </div>
 
 <script>
-  // Loader finish
-  setTimeout(()=>{document.body.classList.add('loaded');},1500);
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
 
-  // Stars & sparks
-  const starsContainer = document.getElementById('stars');
-  for(let i=0;i<150;i++){
-    let star=document.createElement('div');
-    star.className='star';
-    let size=Math.random()*3;
-    star.style.width=size+'px';
-    star.style.height=size+'px';
-    star.style.left=Math.random()*100+'%';
-    star.style.top=Math.random()*100+'%';
-    star.style.animationDuration=(Math.random()*3+2)+'s';
-    star.style.animationDelay=Math.random()*2+'s';
-    starsContainer.appendChild(star);
-  }
-  for(let i=0;i<200;i++){
-    let spark=document.createElement('div');
-    spark.className='spark';
-    spark.style.left=Math.random()*100+'%';
-    spark.style.top=Math.random()*100+'%';
-    spark.style.animationDuration=(Math.random()*2+1)+'s';
-    spark.style.animationDelay=Math.random()*1+'s';
-    starsContainer.appendChild(spark);
-  }
+// Loader finish
+setTimeout(()=>{document.body.classList.add('loaded');},1500);
 
-  // Mouse parallax particles (interactive)
-  document.addEventListener('mousemove',e=>{
-    for(let i=0;i<5;i++){
-      let p=document.createElement('div');
-      p.className='spark';
-      p.style.left=e.clientX+'px';
-      p.style.top=e.clientY+'px';
-      p.style.width='3px';
-      p.style.height='3px';
-      p.style.opacity=0.8;
-      starsContainer.appendChild(p);
-      setTimeout(()=>{p.remove();},1000);
-    }
-  });
+// Resize
+window.addEventListener('resize',()=>{w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;});
+
+// Particle, Spark, Ring, Confetti classes
+class Particle{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=Math.random()*2-1;this.vy=Math.random()*2-1;this.size=Math.random()*3+1;this.color='rgba(0,255,255,'+Math.random()+')';} update(scroll){this.x+=this.vx+scroll*0.02;this.y+=this.vy+scroll*0.01;if(this.x<0)this.x=w;if(this.x>w)this.x=0;if(this.y<0)this.y=h;if(this.y>h)this.y=0;} draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color;ctx.fill();}}
+class Spark{constructor(x,y){this.x=x;this.y=y;this.vx=Math.random()*4-2;this.vy=Math.random()*4-2;this.size=Math.random()*2+1;this.life=50;this.color='rgba(0,255,255,0.8)';} update(){this.x+=this.vx;this.y+=this.vy;this.life--;this.size*=0.95;} draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color;ctx.fill();}}
+class Ring{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.radius=Math.random()*10+5;this.max=50;this.vr=0.5;this.color='rgba(0,255,255,0.3)';} update(){this.radius+=this.vr;if(this.radius>this.max){this.radius=0;this.x=Math.random()*w;this.y=Math.random()*h;}} draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.strokeStyle=this.color;ctx.stroke();}}
+class Confetti{constructor(){this.x=Math.random()*w;this.y=Math.random()*-h;this.vx=Math.random()*2-1;this.vy=Math.random()*3+1;this.size=Math.random()*3+2;this.color=`hsla(${Math.random()*360},100%,50%,0.9)`;} update(){this.x+=this.vx;this.y+=this.vy;if(this.y>h)this.y=-10;} draw(){ctx.fillStyle=this.color;ctx.fillRect(this.x,this.y,this.size,this.size);}}
+
+const particles=[],sparks=[],rings=[],confetti=[];
+for(let i=0;i<300;i++)particles.push(new Particle());
+for(let i=0;i<50;i++)rings.push(new Ring());
+for(let i=0;i<200;i++)confetti.push(new Confetti());
+
+let lastScroll=0;
+document.addEventListener('mousemove',e=>{
+  for(let i=0;i<5;i++){
+    let s=new Spark(e.clientX+Math.random()*20-10,e.clientY+Math.random()*20-10);
+    sparks.push(s);
+  }
+});
+
+function animate(){
+  let scrollOffset=window.scrollY-lastScroll; lastScroll=window.scrollY;
+  ctx.fillStyle='rgba(10,10,42,0.3)'; ctx.fillRect(0,0,w,h);
+
+  for(let p of particles){p.update(scrollOffset);p.draw();}
+  for(let s of sparks){s.update();s.draw();} for(let i=sparks.length-1;i>=0;i--){if(sparks[i].life<=0)sparks.splice(i,1);}
+  for(let r of rings){r.update();r.draw();}
+  for(let c of confetti){c.update();c.draw();}
+
+  for(let i=0;i<particles.length;i++){for(let j=i;j<particles.length;j++){
+    let dx=particles[i].x-particles[j].x;let dy=particles[i].y-particles[j].y;let dist=Math.sqrt(dx*dx+dy*dy);
+    if(dist<120){ctx.beginPath();ctx.strokeStyle='rgba(0,255,255,'+(1-dist/120)+')';ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}
+  }}
+
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
 </body>
 </html>
