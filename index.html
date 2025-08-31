@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Social Profiles</title>
+    <title>Nabil K Sabu - Social Profiles</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: linear-gradient(135deg, #0a0a2a, #1a1a40, #0a0a2a);
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -23,49 +23,59 @@
             justify-content: center;
             padding: 20px;
             overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
         
         .container {
             width: 100%;
             max-width: 500px;
             text-align: center;
+            z-index: 1;
         }
         
         .profile {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             animation: fadeIn 1s ease-out;
         }
         
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 30px rgba(100, 149, 237, 0.8);
-            margin-bottom: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .profile-pic:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(100, 149, 237, 1);
-        }
-        
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            background: linear-gradient(45deg, #ff8a00, #e52e71, #5e5eff);
+            text-shadow: 0 0 15px rgba(100, 149, 237, 0.8);
+            background: linear-gradient(45deg, #4facfe, #00f2fe, #a6c1ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradientShift 5s infinite alternate;
         }
         
-        p {
+        .title {
             font-size: 1.2rem;
             margin-bottom: 30px;
             opacity: 0.9;
+            color: #a6c1ee;
         }
         
         .links {
@@ -79,7 +89,7 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding: 15px 25px;
+            padding: 18px 25px;
             border-radius: 50px;
             text-decoration: none;
             color: white;
@@ -102,7 +112,7 @@
             right: -2px;
             bottom: -2px;
             z-index: -1;
-            background: linear-gradient(45deg, #ff8a00, #e52e71, #5e5eff, #00ffcc);
+            background: linear-gradient(45deg, #4facfe, #00f2fe, #a6c1ee, #fbc2eb);
             background-size: 400%;
             border-radius: 50px;
             opacity: 0;
@@ -128,6 +138,11 @@
             margin-right: 15px;
             width: 30px;
             text-align: center;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .link-button:hover i {
+            transform: scale(1.2);
         }
         
         .link-button .button-text {
@@ -140,19 +155,16 @@
         .link-button.instagram { --color: #e4405f; }
         .link-button.youtube { --color: #ff0000; }
         
-        .link-button:hover i {
-            transform: scale(1.2);
-            color: var(--color);
-        }
-        
-        .link-button i {
-            transition: transform 0.3s, color 0.3s;
-        }
+        .link-button:hover i.fa-linkedin { color: #0077b5; }
+        .link-button:hover i.fa-github { color: #6e5494; }
+        .link-button:hover i.fa-instagram { color: #e4405f; }
+        .link-button:hover i.fa-youtube { color: #ff0000; }
         
         footer {
             margin-top: 20px;
             opacity: 0.7;
             font-size: 0.9rem;
+            color: #a6c1ee;
         }
         
         /* Animations */
@@ -179,20 +191,19 @@
         .link-button:nth-child(3) { animation: fadeIn 0.6s ease-out 0.6s both; }
         .link-button:nth-child(4) { animation: fadeIn 0.6s ease-out 0.8s both; }
         .link-button:nth-child(5) { animation: fadeIn 0.6s ease-out 1.0s both; }
-        .link-button:nth-child(6) { animation: fadeIn 0.6s ease-out 1.2s both; }
         
         /* Responsive design */
         @media (max-width: 600px) {
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
-            p {
+            .title {
                 font-size: 1rem;
             }
             
             .link-button {
-                padding: 12px 20px;
+                padding: 15px 20px;
                 font-size: 1rem;
             }
             
@@ -203,47 +214,41 @@
     </style>
 </head>
 <body>
+    <div class="stars" id="stars"></div>
+    
     <div class="container">
         <div class="profile">
-            <!-- Replace with your own image URL -->
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80" alt="Profile Picture" class="profile-pic">
-            <h1>John Smith</h1>
-            <p>Developer & Content Creator</p>
+            <h1>Nabil K Sabu</h1>
+            <p class="title">Developer & Content Creator</p>
         </div>
         
         <div class="links">
             <!-- LINKEDIN -->
-            <a href="https://linkedin.com/in/yourprofile" class="link-button linkedin" target="_blank">
+            <a href="https://www.linkedin.com/in/nabil-k-sabu-208393370?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="link-button linkedin" target="_blank">
                 <i class="fab fa-linkedin"></i>
                 <span class="button-text">LinkedIn</span>
             </a>
             
             <!-- GITHUB 1 -->
-            <a href="https://github.com/yourprofile1" class="link-button github" target="_blank">
+            <a href="https://github.com/nabilksabu" class="link-button github" target="_blank">
                 <i class="fab fa-github"></i>
-                <span class="button-text">GitHub (Personal)</span>
+                <span class="button-text">GitHub (nabilksabu)</span>
             </a>
             
             <!-- GITHUB 2 -->
-            <a href="https://github.com/yourprofile2" class="link-button github" target="_blank">
+            <a href="https://github.com/excitedtritium" class="link-button github" target="_blank">
                 <i class="fab fa-github"></i>
-                <span class="button-text">GitHub (Work)</span>
+                <span class="button-text">GitHub (excitedtritium)</span>
             </a>
             
-            <!-- INSTAGRAM 1 -->
-            <a href="https://instagram.com/yourprofile1" class="link-button instagram" target="_blank">
+            <!-- INSTAGRAM -->
+            <a href="https://instagram.com/nabilksabu" class="link-button instagram" target="_blank">
                 <i class="fab fa-instagram"></i>
-                <span class="button-text">Instagram (Personal)</span>
-            </a>
-            
-            <!-- INSTAGRAM 2 -->
-            <a href="https://instagram.com/yourprofile2" class="link-button instagram" target="_blank">
-                <i class="fab fa-instagram"></i>
-                <span class="button-text">Instagram (Photography)</span>
+                <span class="button-text">Instagram</span>
             </a>
             
             <!-- YOUTUBE -->
-            <a href="https://youtube.com/yourchannel" class="link-button youtube" target="_blank">
+            <a href="https://youtube.com/@nabilksabu" class="link-button youtube" target="_blank">
                 <i class="fab fa-youtube"></i>
                 <span class="button-text">YouTube Channel</span>
             </a>
@@ -251,10 +256,33 @@
     </div>
     
     <footer>
-        <p>© 2023 My Social Profiles. All rights reserved.</p>
+        <p>© 2023 Nabil K Sabu. All rights reserved.</p>
     </footer>
 
     <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 150;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
         // Add interactive effects to buttons
         document.querySelectorAll('.link-button').forEach(button => {
             button.addEventListener('mouseenter', function() {
@@ -265,6 +293,9 @@
                 this.style.background = 'rgba(255, 255, 255, 0.1)';
             });
         });
+        
+        // Initialize stars when page loads
+        window.addEventListener('load', createStars);
     </script>
 </body>
 </html>
